@@ -1,0 +1,25 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.kort {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+}
+.kort img {
+  width: 100%;
+  border-radius: 4px;
+}
