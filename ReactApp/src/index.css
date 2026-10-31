@@ -49,10 +49,26 @@ main {
   padding: 0.75rem 1rem;
   border-bottom: 1px solid #ddd;
 }
+.nav-hoyre {
+  margin-left: auto;
+}
 .footer {
   text-align: center;
   padding: 1rem;
   border-top: 1px solid #ddd;
   color: #666;
   font-size: 0.9rem;
+}
+.skjema {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 320px;
+}
+.skjema input {
+  padding: 0.5rem;
+}
+.feil {
+  color: #b00020;
+  margin: 0;
 }
