@@ -1,4 +1,4 @@
-# Innlevering2APP2000#
+# Innlevering2APP2000# versjon fra konflikt-test
 
 Prosjektgruppe i APP2000. Dummy-repo for å øve på Git og GitHub.
 
