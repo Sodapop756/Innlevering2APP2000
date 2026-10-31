@@ -72,3 +72,21 @@ main {
   color: #b00020;
   margin: 0;
 }
+
+.skjema label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.skjema select {
+  padding: 0.5rem;
+}
+.boks {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin-top: 1.5rem;
+}
+.linje {
+  margin: 0.5rem 0;
+}
