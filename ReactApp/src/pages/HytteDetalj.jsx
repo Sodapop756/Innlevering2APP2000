@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { cabinData } from "../data/cabins";
+import { trips } from "../data/trips";
 
 const FALLBACK = "https://placehold.co/600x400?text=Ingen+bilde";
 
@@ -22,6 +23,9 @@ export default function HytteDetalj() {
   }
 
   const { member, nonMember } = cabin.pricing.perNight;
+
+  // Turene som er knyttet til denne hytta
+  const cabinTrips = trips.filter((t) => cabin.connectedTripIds.includes(t.id));
 
   return (
     <>
@@ -51,6 +55,19 @@ export default function HytteDetalj() {
           {cabin.owner.contact.email && ` (${cabin.owner.contact.email})`}
         </li>
       </ul>
+
+      <h2>Turer fra denne hytta</h2>
+      {cabinTrips.length === 0 ? (
+        <p>Ingen turer er knyttet til denne hytta.</p>
+      ) : (
+        <ul>
+          {cabinTrips.map((t) => (
+            <li key={t.id}>
+              <Link to={`/tur/${t.id}`}>{t.name}</Link>
+            </li>
+          ))}
+        </ul>
+      )}
 
       <h2>Åpningstider</h2>
       {cabin.openSeasons.length === 0 ? (

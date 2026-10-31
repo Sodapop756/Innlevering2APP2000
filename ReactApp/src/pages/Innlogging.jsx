@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 
 export default function Innlogging() {
@@ -6,6 +6,14 @@ export default function Innlogging() {
   const [brukernavn, setBrukernavn] = useState("");
   const [passord, setPassord] = useState("");
   const [feil, setFeil] = useState("");
+  const brukernavnRef = useRef(null);
+
+  // Legger markøren i brukernavn-feltet når siden vises
+  useEffect(() => {
+    if (brukernavnRef.current) {
+      brukernavnRef.current.focus();
+    }
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault(); // hindrer at siden lastes på nytt
@@ -34,6 +42,7 @@ export default function Innlogging() {
       <h1>Logg inn</h1>
       <form className="skjema" onSubmit={handleSubmit}>
         <input
+          ref={brukernavnRef}
           type="text"
           placeholder="Brukernavn"
           value={brukernavn}

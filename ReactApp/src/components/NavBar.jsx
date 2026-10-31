@@ -8,6 +8,7 @@ export default function NavBar() {
     <nav className="nav">
       <Link to="/">Hjem</Link>
       <Link to="/hytter">Hytter</Link>
+      <Link to="/turer">Turer</Link>
       <Link to="/favoritter">Favoritter</Link>
       <Link to="/bestill">Bestill</Link>
       <Link to="/om">Om</Link>

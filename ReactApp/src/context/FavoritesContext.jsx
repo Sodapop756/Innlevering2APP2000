@@ -1,9 +1,28 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const FavoritesContext = createContext(null);
+const NOKKEL = "favoritter";
+
+// Henter lagrede favoritter fra nettleseren (eller en tom liste)
+function hentLagret() {
+  try {
+    const lagret = localStorage.getItem(NOKKEL);
+    if (lagret) {
+      return JSON.parse(lagret);
+    }
+  } catch {
+    // ugyldig data eller ingen tilgang til localStorage
+  }
+  return [];
+}
 
 export function FavoritesProvider({ children }) {
-  const [ids, setIds] = useState([]);
+  const [ids, setIds] = useState(hentLagret);
+
+  // Lagrer listen hver gang den endrer seg
+  useEffect(() => {
+    localStorage.setItem(NOKKEL, JSON.stringify(ids));
+  }, [ids]);
 
   function toggle(id) {
     if (ids.includes(id)) {

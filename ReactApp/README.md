@@ -1,16 +1,51 @@
-# React + Vite
+# Turapp – React-prototype
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend-prototype for turappen (prosjektoppgave 2025/2026, APP2000).
+Laget med React og Vite. Dataene er hardkodet i `src/data`, og det finnes
+ingen backend ennå.
 
-Currently, two official plugins are available:
+## Kjøre appen
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Du trenger Node.js og npm. Fra mappen `ReactApp`:
 
-## React Compiler
+```
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Åpne deretter http://localhost:5173 i nettleseren.
 
-## Expanding the ESLint configuration
+Andre kommandoer:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Kommando          | Hva den gjør                 |
+| ----------------- | ---------------------------- |
+| `npm run build`   | Bygger appen for produksjon  |
+| `npm run lint`    | Sjekker koden med ESLint     |
+| `npm run preview` | Viser den bygde appen lokalt |
+
+## Hva appen kan
+
+- **Hytter:** liste med søk og filter (type og prisnivå), og en detaljside per hytte
+- **Turer:** liste og detaljside, knyttet til hyttene via `connectedTripIds`
+- **Favoritter:** hjerteknapp på hyttekortene og en egen favorittside
+- **Innlogging:** enkel demo uten ekte passordsjekk (kommer med backend)
+- **Bestilling:** skjema med validering og bestillingsliste med sum, kun etter innlogging
+
+## Mappestruktur
+
+```
+src/
+├── components/   gjenbrukbare deler (NavBar, Footer, HytteKort, skjema m.m.)
+├── context/      delt tilstand: FavoritesContext og AuthContext
+├── data/         hardkodede data: cabins.js og trips.js
+├── pages/        én fil per side/rute
+├── App.jsx       ruter
+└── Layout.jsx    banner, meny og bunntekst rundt alle sider
+```
+
+## Begrensninger
+
+- Alle data er hardkodet. Innlogging, favoritter og bestillinger lagres ikke
+  og nullstilles når siden lastes på nytt.
+- Hyttebildene i dataene peker til `example.org` og vises derfor som
+  erstatningsbilde.

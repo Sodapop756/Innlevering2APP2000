@@ -5,6 +5,8 @@ import Layout from "./Layout";
 import Hjem from "./pages/Hjem";
 import Hytter from "./pages/Hytter";
 import HytteDetalj from "./pages/HytteDetalj";
+import Turer from "./pages/Turer";
+import TurDetalj from "./pages/TurDetalj";
 import Favoritter from "./pages/Favoritter";
 import Innlogging from "./pages/Innlogging";
 import Bestill from "./pages/Bestill";
@@ -21,6 +23,8 @@ export default function App() {
               <Route path="/" element={<Hjem />} />
               <Route path="/hytter" element={<Hytter />} />
               <Route path="/hytte/:id" element={<HytteDetalj />} />
+              <Route path="/turer" element={<Turer />} />
+              <Route path="/tur/:id" element={<TurDetalj />} />
               <Route path="/favoritter" element={<Favoritter />} />
               <Route path="/logg-inn" element={<Innlogging />} />
               <Route path="/bestill" element={<Bestill />} />
