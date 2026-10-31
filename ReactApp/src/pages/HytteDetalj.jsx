@@ -7,29 +7,27 @@ export default function HytteDetalj() {
   const { id } = useParams();
   const cabin = cabinData.cabins.find((c) => c.id === id);
 
-  if (!cabin)
+  if (!cabin) {
     return (
-      <main>
+      <>
         <p>Fant ikke hytta.</p>
-        <Link to="/">Tilbake</Link>
-      </main>
+        <Link to="/hytter">Tilbake</Link>
+      </>
     );
+  }
 
-  const img = cabin.images[0];
+  let bildeUrl = FALLBACK;
+  if (cabin.images.length > 0) {
+    bildeUrl = cabin.images[0].url;
+  }
+
   const { member, nonMember } = cabin.pricing.perNight;
 
   return (
-    <main>
-      <Link to="/">← Tilbake</Link>
+    <>
+      <Link to="/hytter">← Tilbake</Link>
       <h1>{cabin.name}</h1>
-      <img
-        src={img?.url ?? FALLBACK}
-        alt={img?.alt ?? cabin.name}
-        onError={(e) => {
-          e.currentTarget.src = FALLBACK;
-        }}
-        style={{ maxWidth: "100%" }}
-      />
+      <img src={bildeUrl} alt={cabin.name} style={{ maxWidth: "100%" }} />
       <p>{cabin.description.nb}</p>
 
       <ul>
@@ -44,7 +42,7 @@ export default function HytteDetalj() {
         <li>Sengeplasser: {cabin.capacity.totalBeds}</li>
         <li>
           Fasiliteter:{" "}
-          {cabin.facilities.length
+          {cabin.facilities.length > 0
             ? cabin.facilities.join(", ")
             : "Ingen oppgitt"}
         </li>
@@ -73,11 +71,12 @@ export default function HytteDetalj() {
       ) : (
         cabin.reviews.map((r) => (
           <p key={r.id}>
-            <strong>{r.author}</strong> – {"★".repeat(r.stars)} ({r.date})<br />
+            <strong>{r.author}</strong> – {"★".repeat(r.stars)} ({r.date})
+            <br />
             {r.text}
           </p>
         ))
       )}
-    </main>
+    </>
   );
 }

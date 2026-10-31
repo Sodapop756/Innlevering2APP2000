@@ -33,3 +33,26 @@ main {
 .filter select {
   padding: 0.4rem;
 }
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.layout main {
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+.nav {
+  display: flex;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #ddd;
+}
+.footer {
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid #ddd;
+  color: #666;
+  font-size: 0.9rem;
+}

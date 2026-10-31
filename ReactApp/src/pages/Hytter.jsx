@@ -2,7 +2,7 @@ import { useState } from "react";
 import { cabinData } from "../data/cabins";
 import HytteKort from "../components/HytteKort";
 
-export default function Landing() {
+export default function Hytter() {
   const [type, setType] = useState("all");
   const [maxPrice, setMaxPrice] = useState(3);
   const [search, setSearch] = useState("");
@@ -15,9 +15,8 @@ export default function Landing() {
   );
 
   return (
-    <main>
-      <h1>Turapp</h1>
-      <h2>Utvalgte hytter</h2>
+    <>
+      <h1>Hytter</h1>
 
       <div className="filter">
         <input
@@ -47,6 +46,6 @@ export default function Landing() {
           <HytteKort key={c.id} cabin={c} />
         ))}
       </div>
-    </main>
+    </>
   );
 }
